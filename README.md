@@ -43,7 +43,9 @@ See values.yaml for full documentation
 | `nameOverride`              | Name Override                                      | `""`                                             |
 | `fullnameOverride`          | FullName Override                                  | `""`                                             |
 | `service.type`              | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
-| `service.ports`             | Ports exposed by service                           | `80`                                             |
+| `service.port`              | Ports exposed by service                           | `80`                                             |
+| `service.portName`          | Name of exposed port, becomes LB protocol on ELB   | `http`                                           |
+| `service.annotations`       | Service annotations                                | `{}`                                             |
 | `ingress.enabled`           | Enables Ingress                                    | `false`                                          |
 | `ingress.annotations`       | Ingress annotations                                | `{}`                                             |
 | `ingress.hosts.host`        | Ingress accepted hostnames                         | `privatebin.local`                               |
