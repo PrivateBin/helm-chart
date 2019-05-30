@@ -7,17 +7,10 @@ This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/
 To install the privatebin chart with default options:
 
 ```bash
-cd kubernetes/
-helm install ./privatebin/
+helm install ./
 ```
 
 ## Installation
-
-1. checkout the repo and change to the kubernetes directory.
-
-```bash
-cd kubernetes/
-```
 
 1. Customize your values.yaml for your needs. Add a [custom config.php](https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php) to change any default settings.
 
@@ -27,7 +20,7 @@ cd kubernetes/
     helm install \
       --name your-release \
       --values your-values.yaml \
-      privatebin/
+      ./
     ```
 
 ## Configuration
