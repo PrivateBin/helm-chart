@@ -1,26 +1,25 @@
 # privatebin
+
 This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/PrivateBin).
 
 ## Quick Start
+
 To install the privatebin chart with default options:
 
 ```bash
-helm repo update
-helm fetch incubator/privatebin
-tar -xvzf privatebin-*.tgz
-helm install privatebin/
+cd kubernetes/
+helm install ./privatebin/
 ```
 
 ## Installation
-1. Download the chart
 
-    ```bash
-    helm repo update
-    helm fetch incubator/privatebin
-    tar -xvzf privatebin-*.tgz
-    ```
+1. checkout the repo and change to the kubernetes directory.
 
-1. Customize your values.yaml for your needs. Add [custom config.php](https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php)
+```bash
+cd kubernetes/
+```
+
+1. Customize your values.yaml for your needs. Add a [custom config.php](https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php) to change any default settings.
 
 1. Deploy with helm
 
@@ -32,6 +31,7 @@ helm install privatebin/
     ```
 
 ## Configuration
+
 See values.yaml for full documentation
 
 |              Parameter      |                    Description                     |                     Default                      |
@@ -56,4 +56,3 @@ See values.yaml for full documentation
 | `tolerations`               | Tolerations                                        | `[]`                                             |
 | `affinity`                  | Affinity or Anti-Affinity                          | `{}`                                             |
 | `configs`                   | List of files to put in cfg path                   | `{}`                                             |
-

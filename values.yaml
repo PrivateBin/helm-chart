@@ -53,4 +53,4 @@ affinity: {}
 
 configs: {}
   # config.php: |-
-  #   ; see https://github.com/DailyFeats/PrivateBin/blob/master/cfg/conf.sample.php for config
+  #   ; see https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php for config
