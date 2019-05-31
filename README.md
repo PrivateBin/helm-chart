@@ -7,7 +7,7 @@ This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/
 To install the privatebin chart with default options:
 
 ```bash
-helm install ./
+helm install ./charts/privatebin
 ```
 
 ## Installation
@@ -20,7 +20,7 @@ helm install ./
     helm install \
       --name your-release \
       --values your-values.yaml \
-      ./
+      ./charts/privatebin
     ```
 
 ## Configuration
