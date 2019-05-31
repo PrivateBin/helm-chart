@@ -31,7 +31,7 @@ See values.yaml for full documentation
 | --------------------------- | -------------------------------------------------- | ------------------------------------------------ |
 | `replicaCount`              | Number of replicas                                 | `1`                                              |
 | `image.repository`          | Container image name                               | `privatebin/nginx-fpm-alpine`                    |
-| `image.tag`                 | Container image tag                                | `1.2.1`                                          |
+| `image.tag`                 | Container image tag                                | ``                                               |
 | `image.pullPolicy`          | Container image pull policy                        | `IfNotPresent`                                   |
 | `nameOverride`              | Name Override                                      | `""`                                             |
 | `fullnameOverride`          | FullName Override                                  | `""`                                             |

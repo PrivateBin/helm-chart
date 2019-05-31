@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   # https://github.com/PrivateBin/docker-nginx-fpm-alpine
   repository: privatebin/nginx-fpm-alpine
-  tag: 1.2.1
+  # tag: latest # defaults to Chart.appVersion
   pullPolicy: IfNotPresent
 
 nameOverride: ""
