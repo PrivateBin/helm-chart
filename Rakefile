@@ -11,7 +11,7 @@ class Chart < OpenStruct
   end
 
   def self.all
-    @all ||= Dir["charts/**/Chart.yaml"].map { |source| new(source) }
+    @all ||= Dir["**/Chart.yaml"].map { |source| new(source) }
   end
 
   def self.targets
@@ -34,7 +34,7 @@ task package: Chart.targets
 
 rule ".tgz" => ->(target) { Chart.from_target(target) } do |t|
   sh "mkdir -p #{WEB_ROOT}"
-  sh "helm package -d #{WEB_ROOT} charts/#{t.source.name}"
+  sh "helm package -d #{WEB_ROOT} #{t.source.name} --save=false"
 end
 
 desc "Index the helm repo"

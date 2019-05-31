@@ -1,0 +1,18 @@
+---
+language: ruby
+before_install:
+  - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+  - sudo bash ./get_helm.sh
+  - helm version --client
+  - helm init --client-only
+script:
+  - rake package --trace
+  - rake index --trace
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: docs
+  on:
+    branch: master
