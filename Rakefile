@@ -2,7 +2,7 @@ require "ostruct"
 require "yaml"
 
 WEB_ROOT = "docs"
-REPO_URL = "https://bdashrad.github.io/privatebin-helm/"
+REPO_URL = "https://privatebin.github.io/helm-chart/"
 
 class Chart < OpenStruct
   def initialize(source)
