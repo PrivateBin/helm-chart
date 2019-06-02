@@ -3,15 +3,15 @@ entries:
   privatebin:
   - apiVersion: v1
     appVersion: 1.2.1
-    created: "2019-05-31T20:49:33.983373611Z"
+    created: "2019-06-02T00:17:32.183108113Z"
     description: A Helm chart for installing PrivateBin
-    digest: bfa2ebeb0f40f8110703df94b2c6d77416321bfb46b66902ef72b7ee23499d5a
+    digest: bd7c1246c2bae495a50ed7de19715591346e654f2e1ca84cfa9b7156eec4bd04
     home: https://github.com/PrivateBin/PrivateBin
     maintainers:
     - email: bdashrad@gmail.com
       name: bdashrad
     name: privatebin
     urls:
-    - https://bdashrad.github.io/privatebin-helm/privatebin-0.2.3.tgz
+    - https://privatebin.github.io/helm-chart/privatebin-0.2.3.tgz
     version: 0.2.3
-generated: "2019-05-31T20:49:33.982037374Z"
+generated: "2019-06-02T00:17:32.182540902Z"
