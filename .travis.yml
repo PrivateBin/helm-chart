@@ -6,8 +6,8 @@ before_install:
   - helm version --client
   - helm init --client-only
 script:
-  - rake package --trace
-  - rake index --trace
+  - rake package
+  - rake index
 deploy:
   provider: pages
   skip_cleanup: true
