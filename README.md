@@ -1,4 +1,4 @@
-# privatebin
+# PrivateBin Helm Chart
 
 This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/PrivateBin).
 
@@ -7,7 +7,7 @@ This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/
 To install the privatebin chart with default options:
 
 ```bash
-helm repo add privatebin https://bdashrad.github.io/privatebin-helm
+helm repo add privatebin https://privatebin.github.io/helm-chart
 helm repo update
 helm install privatebin/privatebin
 ```
