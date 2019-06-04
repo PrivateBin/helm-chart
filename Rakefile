@@ -31,7 +31,7 @@ end
 
 desc "Clone existing releases"
 task :clone do
-  sh "git clone --depth 1 git@github.com:PrivateBin/helm-chart.git -b gh-pages releases/"
+  sh "git clone --depth 1 https://github.com/PrivateBin/helm-chart.git -b gh-pages releases/"
 end
 
 desc "Build packed helm charts"
