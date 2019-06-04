@@ -3,15 +3,23 @@ entries:
   privatebin:
   - apiVersion: v1
     appVersion: 1.2.1
-    created: "2019-06-02T07:00:16.129278124Z"
+    created: "2019-06-04T05:29:18.241090106Z"
     description: A Helm chart for installing PrivateBin
-    digest: 55b68712ca46e1282e821f9e16a702eeac3e6bf123c4e8acf1eb8bfd9c35e2aa
-    home: https://github.com/PrivateBin/PrivateBin
+    digest: 13aa1216a2bd6b9efd4fcc8b7d78b7f7cea553e5fff3649423eb30c4711eaddc
+    home: https://privatebin.info/
+    icon: https://raw.githubusercontent.com/PrivateBin/assets/master/images/preview/icon.png
+    keywords:
+    - pastebin
+    - PrivateBin
+    - ZeroBin
     maintainers:
     - email: bdashrad@gmail.com
       name: bdashrad
     name: privatebin
+    sources:
+    - https://github.com/PrivateBin/PrivateBin
+    - https://github.com/PrivateBin/docker-nginx-fpm-alpine
     urls:
-    - https://privatebin.github.io/helm-chart/privatebin-0.2.3.tgz
-    version: 0.2.3
-generated: "2019-06-02T07:00:16.128333702Z"
+    - https://privatebin.github.io/helm-chart/privatebin-0.2.4.tgz
+    version: 0.2.4
+generated: "2019-06-04T05:29:18.240207948Z"
