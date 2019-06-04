@@ -29,6 +29,11 @@ class Chart < OpenStruct
   end
 end
 
+desc "Clone existing releases"
+task :clone do
+  sh "git clone --depth 1 https://github.com/PrivateBin/helm-chart.git -b gh-pages releases/"
+end
+
 desc "Build packed helm charts"
 task package: Chart.targets
 
@@ -41,7 +46,9 @@ desc "Index the helm repo"
 task index: [WEB_ROOT, "#{WEB_ROOT}/index.yaml"]
 
 rule "#{WEB_ROOT}/index.yaml" => Chart.targets do
-  sh "helm repo index #{WEB_ROOT} --url #{REPO_URL}"
+  sh "mv releases/*.tgz #{WEB_ROOT}/"
+  sh "mv releases/index.yaml #{WEB_ROOT}/"
+  sh "helm repo index #{WEB_ROOT} --url #{REPO_URL} --merge #{WEB_ROOT}/index.yaml"
 end
 
 task :clean do
