@@ -61,6 +61,7 @@ end
 
 task :clean do
   sh "rm -rf #{WEB_ROOT}"
+  sh "rm -rf releases/"
 end
 
 task default: [:package, :index]
