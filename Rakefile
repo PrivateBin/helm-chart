@@ -43,7 +43,15 @@ rule ".tgz" => ->(target) { Chart.from_target(target) } do |t|
 end
 
 desc "Index the helm repo"
-task index: [WEB_ROOT, "#{WEB_ROOT}/index.yaml"]
+task index: [
+  WEB_ROOT,
+  "#{WEB_ROOT}/README.md",
+  "#{WEB_ROOT}/index.yaml"
+]
+
+rule "#{WEB_ROOT}/README.md" do
+  sh "cp README.md #{WEB_ROOT}/README.md"
+end
 
 rule "#{WEB_ROOT}/index.yaml" => Chart.targets do
   sh "mv releases/*.tgz #{WEB_ROOT}/"
@@ -53,6 +61,7 @@ end
 
 task :clean do
   sh "rm -rf #{WEB_ROOT}"
+  sh "rm -rf releases/"
 end
 
 task default: [:package, :index]
