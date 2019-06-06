@@ -3,7 +3,7 @@ entries:
   privatebin:
   - apiVersion: v1
     appVersion: 1.2.1
-    created: "2019-06-04T17:14:54.576522484Z"
+    created: "2019-06-06T13:36:28.473102115Z"
     description: A Helm chart for installing PrivateBin
     digest: adb5a930c25b0a30865fe7b646048c5305a78adc9b1c1305e04f69139ab58ed8
     home: https://privatebin.info/
@@ -24,7 +24,7 @@ entries:
     version: 0.2.4
   - apiVersion: v1
     appVersion: 1.2.1
-    created: "2019-06-04T17:14:54.575846353Z"
+    created: "2019-06-06T13:36:28.4723789Z"
     description: A Helm chart for installing PrivateBin
     digest: 55b68712ca46e1282e821f9e16a702eeac3e6bf123c4e8acf1eb8bfd9c35e2aa
     home: https://github.com/PrivateBin/PrivateBin
@@ -35,4 +35,4 @@ entries:
     urls:
     - https://privatebin.github.io/helm-chart/privatebin-0.2.3.tgz
     version: 0.2.3
-generated: "2019-06-04T17:14:54.574522212Z"
+generated: "2019-06-06T13:36:28.471030451Z"
