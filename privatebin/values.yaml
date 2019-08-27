@@ -3,6 +3,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# if you are using the default filesystem storage class, don't use
+# multiple replicas
 replicaCount: 1
 
 image:
@@ -53,5 +55,5 @@ tolerations: []
 affinity: {}
 
 configs: {}
-  # config.php: |-
+  # conf.php: |-
   #   ; see https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php for config
