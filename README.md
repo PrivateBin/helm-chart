@@ -51,3 +51,8 @@ See values.yaml for full documentation
 | `tolerations`               | Tolerations                                        | `[]`                                             |
 | `affinity`                  | Affinity or Anti-Affinity                          | `{}`                                             |
 | `configs`                   | List of files to put in cfg path                   | `{}`                                             |
+
+## Upgrades
+Standard helm upgrade process applies.
+
+Chart release 0.3.0+ defaults to the [image](https://github.com/PrivateBin/docker-nginx-fpm-alpine/releases/tag/1.3.0-alpine3.10) for to PrivateBin 1.3.0. You can find the release notes at https://github.com/PrivateBin/PrivateBin/releases/tag/1.3.
