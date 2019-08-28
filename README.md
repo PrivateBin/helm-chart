@@ -14,7 +14,7 @@ helm install privatebin/privatebin
 
 ## Installation
 
-1. Customize your values.yaml for your needs. Add a [custom config.php](https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php) to change any default settings.
+1. Customize your values.yaml for your needs. Add a [custom conf.php](https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php) to change any default settings.
 
 1. Deploy with helm
 
