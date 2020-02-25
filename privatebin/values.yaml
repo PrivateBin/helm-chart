@@ -15,12 +15,18 @@ image:
 
 nameOverride: ""
 fullnameOverride: ""
+datapath: "/srv/data"
 
 service:
   type: ClusterIP
   port: 80
   portName: http
   annotations: {}
+
+controller:
+  kind: "Deployment"
+  pvc:
+    requests: "1Gi"
 
 ingress:
   enabled: false
