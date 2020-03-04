@@ -22,6 +22,8 @@ service:
   port: 80
   portName: http
   annotations: {}
+  ## Limit load balancer source ips to list of CIDRs (where available)
+  # loadBalancerSourceRanges: []
 
 controller:
   kind: "Deployment"
