@@ -29,28 +29,29 @@ helm install privatebin/privatebin
 
 See values.yaml for full documentation
 
-|              Parameter      |                    Description                     |                     Default                      |
-| --------------------------- | -------------------------------------------------- | ------------------------------------------------ |
-| `replicaCount`              | Number of replicas                                 | `1`                                              |
-| `image.repository`          | Container image name                               | `privatebin/nginx-fpm-alpine`                    |
-| `image.tag`                 | Container image tag                                | ``                                               |
-| `image.pullPolicy`          | Container image pull policy                        | `IfNotPresent`                                   |
-| `nameOverride`              | Name Override                                      | `""`                                             |
-| `fullnameOverride`          | FullName Override                                  | `""`                                             |
-| `service.type`              | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
-| `service.port`              | Ports exposed by service                           | `80`                                             |
-| `service.portName`          | Name of exposed port, becomes LB protocol on ELB   | `http`                                           |
-| `service.annotations`       | Service annotations                                | `{}`                                             |
-| `ingress.enabled`           | Enables Ingress                                    | `false`                                          |
-| `ingress.annotations`       | Ingress annotations                                | `{}`                                             |
-| `ingress.hosts.host`        | Ingress accepted hostnames                         | `privatebin.local`                               |
-| `ingress.hosts.path`        | Ingress path                                       | `\`                                              |
-| `ingress.tls`               | Ingress TLS configuration                          | `[]`                                             |
-| `resources`                 | Pod resource requests & limits                     | `{}`                                             |
-| `nodeSelector`              | Node selector                                      | `{}`                                             |
-| `tolerations`               | Tolerations                                        | `[]`                                             |
-| `affinity`                  | Affinity or Anti-Affinity                          | `{}`                                             |
-| `configs`                   | List of files to put in cfg path                   | `{}`                                             |
+|              Parameter             |                    Description                     |                     Default                      |
+| ---------------------------------- | -------------------------------------------------- | ------------------------------------------------ |
+| `replicaCount`                     | Number of replicas                                 | `1`                                              |
+| `image.repository`                 | Container image name                               | `privatebin/nginx-fpm-alpine`                    |
+| `image.tag`                        | Container image tag                                | ``                                               |
+| `image.pullPolicy`                 | Container image pull policy                        | `IfNotPresent`                                   |
+| `nameOverride`                     | Name Override                                      | `""`                                             |
+| `fullnameOverride`                 | FullName Override                                  | `""`                                             |
+| `service.type`                     | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
+| `service.port`                     | Ports exposed by service                           | `80`                                             |
+| `service.portName`                 | Name of exposed port, becomes LB protocol on ELB   | `http`                                           |
+| `service.annotations`              | Service annotations                                | `{}`                                             |
+| `service.loadBalancerSourceRanges` | Load balancer allowed source CIDRs                 | None                                             |
+| `ingress.enabled`                  | Enables Ingress                                    | `false`                                          |
+| `ingress.annotations`              | Ingress annotations                                | `{}`                                             |
+| `ingress.hosts.host`               | Ingress accepted hostnames                         | `privatebin.local`                               |
+| `ingress.hosts.path`               | Ingress path                                       | `\`                                              |
+| `ingress.tls`                      | Ingress TLS configuration                          | `[]`                                             |
+| `resources`                        | Pod resource requests & limits                     | `{}`                                             |
+| `nodeSelector`                     | Node selector                                      | `{}`                                             |
+| `tolerations`                      | Tolerations                                        | `[]`                                             |
+| `affinity`                         | Affinity or Anti-Affinity                          | `{}`                                             |
+| `configs`                          | List of files to put in cfg path                   | `{}`                                             |
 
 ## Upgrades
 Standard helm upgrade process applies.
