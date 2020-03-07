@@ -1,6 +1,6 @@
-{{- if or (eq .Values.controller.kind "Deployment") (eq .Values.controller.kind "Both") }}
+{{- if or (eq .Values.controller.kind "StatefulSet") (eq .Values.controller.kind "Both") }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "privatebin.fullname" . }}
   labels:
@@ -9,7 +9,6 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
@@ -41,6 +40,8 @@ spec:
           volumeMounts:
             - name: configs
               mountPath: /srv/cfg
+            - name: storage
+              mountPath: {{ .Values.datapath }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -57,4 +58,20 @@ spec:
         - name: configs
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+    {{- if .Values.controller.pvc.storageClass }}
+      {{- if (eq "-" .Values.controller.pvc.storageClass) }}
+      storageClassName: ""
+      {{- else }}
+      storageClassName: "{{ .Values.controller.pvc.storageClass }}"
+      {{- end }}
+    {{- end }}
+      resources:
+        requests:
+          storage: {{ .Values.controller.pvc.requests }}
+      volumeMode: Filesystem
 {{- end }}
