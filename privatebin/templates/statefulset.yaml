@@ -1,4 +1,6 @@
-{{- if or (eq .Values.controller.kind "StatefulSet") (eq .Values.controller.kind "Both") }}
+---
+{{- $controller := default "Deployment" .Values.controller.kind -}}
+{{- if or (eq $controller "StatefulSet") (eq $controller "Both") }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

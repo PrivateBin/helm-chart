@@ -1,4 +1,6 @@
-{{- if or (eq .Values.controller.kind "Deployment") (eq .Values.controller.kind "Both") }}
+---
+{{- $controller := default "Deployment" .Values.controller.kind -}}
+{{- if or (eq $controller "Deployment") (eq $controller "Both") }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
