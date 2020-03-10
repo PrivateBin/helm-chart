@@ -61,19 +61,19 @@ spec:
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
   volumeClaimTemplates:
-  - metadata:
-      name: storage
-    spec:
-      accessModes: [ "ReadWriteMany" ]
-    {{- if .Values.controller.pvc.storageClass }}
-      {{- if (eq "-" .Values.controller.pvc.storageClass) }}
-      storageClassName: ""
-      {{- else }}
-      storageClassName: "{{ .Values.controller.pvc.storageClass }}"
+    - metadata:
+        name: storage
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+      {{- if .Values.controller.pvc.storageClass }}
+        {{- if (eq "-" .Values.controller.pvc.storageClass) }}
+        storageClassName: ""
+        {{- else }}
+        storageClassName: "{{ .Values.controller.pvc.storageClass }}"
+        {{- end }}
       {{- end }}
-    {{- end }}
-      resources:
-        requests:
-          storage: {{ .Values.controller.pvc.requests }}
-      volumeMode: Filesystem
+        resources:
+          requests:
+            storage: {{ .Values.controller.pvc.requests }}
+        volumeMode: Filesystem
 {{- end }}
