@@ -43,9 +43,13 @@ jobs:
           kubectl cluster-info
           kubectl get nodes -o wide
           kubectl get pods -n kube-system
+        # Only build a kind cluster if there are chart changes to test.
+        if: steps.lint.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0-alpha.3
         with:
           command: install
           config: .ci/ct-config.yaml
+        # Only build a kind cluster if there are chart changes to test.
+        if: steps.lint.outputs.changed == 'true'
