@@ -1,6 +1,6 @@
 ---
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "privatebin.fullname" . -}}
+{{- if .Values.ingress.enabled }}
+{{ $fullName := include "privatebin.fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
