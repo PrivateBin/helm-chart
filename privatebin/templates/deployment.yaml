@@ -16,6 +16,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+  serviceName: {{ include "privatebin.name" . }}
   template:
     metadata:
       labels:
