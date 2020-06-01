@@ -19,7 +19,7 @@ datapath: "/srv/data"
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
   portName: http
   annotations: {}
   ## Limit load balancer source ips to list of CIDRs (where available)
