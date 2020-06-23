@@ -1,4 +1,6 @@
-{{- if or (eq .Values.controller.kind "Deployment") (eq .Values.controller.kind "Both") }}
+---
+{{- $controller := default "Deployment" .Values.controller.kind -}}
+{{- if or (eq $controller "Deployment") (eq $controller "Both") }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,6 +16,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+  serviceName: {{ include "privatebin.name" . }}
   template:
     metadata:
       labels:
@@ -26,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
