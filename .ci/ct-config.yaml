@@ -1,0 +1,7 @@
+---
+remote: origin
+chart-dirs:
+  - charts
+chart-repos:
+  - privatebin=https://privatebin.github.io/helm-chart
+helm-extra-args: --timeout 800
