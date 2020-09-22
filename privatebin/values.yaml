@@ -73,3 +73,12 @@ affinity: {}
 configs: {}
   # conf.php: |-
   #   ; see https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php for config
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
