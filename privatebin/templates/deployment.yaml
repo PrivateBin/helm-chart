@@ -34,7 +34,9 @@ spec:
           securityContext:
             runAsUser: 65534
             runAsGroup: 82
-            readOnlyRootFilesystem: True
+            readOnlyRootFilesystem: true
+            privileged: false
+            allowPrivilegeEscalation: false
           livenessProbe:
             httpGet:
               path: /
