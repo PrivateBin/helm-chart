@@ -33,6 +33,8 @@ spec:
           {{ toYaml .Values.podAnnotations | nindent 8 }}
         {{- end }}
     spec:
+      securityContext:
+        fsGroup: 82
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
