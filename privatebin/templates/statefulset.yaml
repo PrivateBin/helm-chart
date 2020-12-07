@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
+  serviceName: {{ include "privatebin.fullname" . }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
@@ -65,7 +66,7 @@ spec:
     - metadata:
         name: storage
       spec:
-        accessModes: [ "ReadWriteMany" ]
+        accessModes: [ "{{ .Values.controller.pvc.accessModes }}" ]
       {{- if .Values.controller.pvc.storageClass }}
         {{- if (eq "-" .Values.controller.pvc.storageClass) }}
         storageClassName: ""
