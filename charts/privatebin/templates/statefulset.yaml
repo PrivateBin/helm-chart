@@ -85,7 +85,7 @@ spec:
     - metadata:
         name: storage
       spec:
-        accessModes: [ "ReadWriteMany" ]
+        accessModes: [ "{{ .Values.controller.pvc.accessModes }}" ]
       {{- if .Values.controller.pvc.storageClass }}
         {{- if (eq "-" .Values.controller.pvc.storageClass) }}
         storageClassName: ""
