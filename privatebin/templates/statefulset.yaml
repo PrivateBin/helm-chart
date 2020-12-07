@@ -22,6 +22,8 @@ spec:
         app.kubernetes.io/name: {{ include "privatebin.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        fsGroup: 82
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
