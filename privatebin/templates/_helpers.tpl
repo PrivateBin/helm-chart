@@ -35,9 +35,20 @@ Create chart name and version as used by the chart label.
 Create the name of the service account to use
 */}}
 {{- define "privatebin.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "privatebin.fullname" .) .Values.serviceAccount.name }}
+{{- if .Values.rbac.create }}
+{{- default (include "privatebin.fullname" .) .Values.rbac.serviceAccount.name }}
 {{- else }}
-{{- default "default" .Values.serviceAccount.name }}
+{{- default "default" .Values.rbac.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Return the appropriate apiVersion for podsecuritypolicy.
+*/}}
+{{- define "privatebin.podSecurityPolicy.apiVersion" -}}
+{{- if semverCompare ">=1.3-0, <1.10-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- print "extensions/v1beta1" -}}
+{{- else if semverCompare "^1.10-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- print "policy/v1beta1" -}}
+{{- end -}}
+{{- end -}}

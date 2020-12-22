@@ -1,0 +1,22 @@
+{{- if .Values.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "privatebin.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "privatebin.name" . }}
+    helm.sh/chart: {{ include "privatebin.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+rules:
+{{- if .Values.podSecurityPolicy.enabled }}
+- apiGroups:
+  - policy
+  resourceNames:
+  - {{ include "privatebin.fullname" . }}
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+{{- end }}
+{{- end -}}

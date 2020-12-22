@@ -1,0 +1,44 @@
+{{- if .Values.podSecurityPolicy.enabled }}
+apiVersion: {{ template "privatebin.podSecurityPolicy.apiVersion" . }}
+kind: PodSecurityPolicy
+metadata:
+  name: {{ include "privatebin.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "privatebin.name" . }}
+    helm.sh/chart: {{ include "privatebin.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+{{- if .Values.podSecurityPolicy.annotations }}
+{{ toYaml .Values.podSecurityPolicy.annotations | indent 4 }}
+{{- end }}
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: true
+{{- end }}
