@@ -1,0 +1,19 @@
+{{- if .Values.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "privatebin.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "privatebin.name" . }}
+    helm.sh/chart: {{ include "privatebin.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "privatebin.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "privatebin.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end -}}
