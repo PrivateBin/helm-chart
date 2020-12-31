@@ -60,7 +60,6 @@ jobs:
         with:
           node_image: "kindest/node:${{ matrix.kubernetesVersion }}"
           config: .ci/kind-config.yaml
-          install_local_path_provisioner: true
         # Only build a kind cluster if there are chart changes to test.
         # if: steps.list-changed.outputs.changed == 'true'
 
