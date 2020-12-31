@@ -62,7 +62,7 @@ jobs:
           config: .ci/kind-config.yaml
           install_local_path_provisioner: true
         # Only build a kind cluster if there are chart changes to test.
-        if: steps.list-changed.outputs.changed == 'true'
+        # if: steps.list-changed.outputs.changed == 'true'
 
       - name: Verify kind
         run: |
@@ -70,9 +70,9 @@ jobs:
           kubectl get nodes -o wide
           kubectl get pods -n kube-system
         # Only build a kind cluster if there are chart changes to test.
-        if: steps.list-changed.outputs.changed == 'true'
+        # if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
         run: ct install
         # Only build a kind cluster if there are chart changes to test.
-        if: steps.list-changed.outputs.changed == 'true'
+        # if: steps.list-changed.outputs.changed == 'true'
