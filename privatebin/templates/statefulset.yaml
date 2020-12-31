@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
+  serviceName: {{ include "privatebin.fullname" . }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
@@ -22,6 +23,22 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
+      securityContext:
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+      initContainers:
+        - name: set-volume-permissions
+          image: "{{ .Values.initChownData.image.repository }}:{{ .Values.initChownData.image.tag }}"
+          imagePullPolicy: {{ .Values.initChownData.image.pullPolicy }}
+          command:
+            - chown
+            - -R
+            - "{{ .Values.securityContext.runAsUser }}:{{ .Values.securityContext.runAsGroup }}"
+            - /srv/cfg
+          volumeMounts:
+            - name: configs
+              mountPath: /srv/cfg
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
@@ -31,8 +48,6 @@ spec:
               containerPort: 8080
               protocol: TCP
           securityContext:
-            runAsUser: 65534
-            runAsGroup: 82
             readOnlyRootFilesystem: true
             privileged: false
             allowPrivilegeEscalation: false
