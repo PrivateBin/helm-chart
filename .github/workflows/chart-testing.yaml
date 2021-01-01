@@ -28,7 +28,7 @@ jobs:
       - name: Copy configs
         run: |-
           mkdir -p ~/.ct
-          cp -r .ci/ ~/.ct 
+          cp -r .ci/ /etc/ct
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
