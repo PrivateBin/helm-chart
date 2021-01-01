@@ -10,7 +10,7 @@ metadata:
     helm.sh/chart: {{ include "privatebin.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-spec :
+spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -23,7 +23,7 @@ spec :
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
-      containers:
+      container:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
