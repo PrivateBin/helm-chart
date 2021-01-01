@@ -56,7 +56,7 @@ jobs:
           node_image: "kindest/node:${{ matrix.kubernetesVersion }}"
           config: .ci/kind-config.yaml
         # Only build a kind cluster if there are chart changes to test.
-        # if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.changed == 'true'
 
       - name: Verify kind
         run: |
@@ -64,9 +64,9 @@ jobs:
           kubectl get nodes -o wide
           kubectl get pods -n kube-system
         # Only build a kind cluster if there are chart changes to test.
-        # if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
         run: ct install --config .ci/ct.yaml
-        # Only build a kind cluster if there are chart changes to test.
-        # if: steps.list-changed.outputs.changed == 'true'
+        # Only install if there are chart changes to test.
+        if: steps.list-changed.outputs.changed == 'true'
