@@ -89,6 +89,3 @@ rbac:
 podSecurityPolicy:
   enabled: false 
   annotations: []
-
-# validating chart-testing
-fakeChange: true
