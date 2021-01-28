@@ -39,6 +39,7 @@ See values.yaml for full documentation
 | `fullnameOverride`           | FullName Override                                  | `""`                                             |
 | `datapath`                   | Datapath for persistent data                       | `/srv/data`                                      |
 | `controller.kind`            | Controller kind (StatefulSet, Deployment, Both)    | `Deployment`                                     |
+| `controller.pvc.serviceName` | ServiceName (only with StatefulSet)                | `privatebin`                                     |
 | `controller.pvc.requests`    | Requests for PVC (only with StatefulSet)           | `1Gi`                                            |
 | `controller.pvc.storageClass`| StorageClass to use for PVC (only with StatefulSet)| `""`                                             |
 | `service.type`               | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
