@@ -89,6 +89,5 @@ rbac:
 
 # If true, create & use Pod Security Policy resources. Requires rbac.
 podSecurityPolicy:
-  enabled: false 
+  enabled: false
   annotations: []
-
