@@ -28,8 +28,6 @@ service:
 controller:
   # Valid values are "Deployment", "StatefulSet", and "Both"
   kind: Deployment
-  # Used for kind "StatefulSet" or "Both"
-  serviceName: privatebin
   pvc:
     requests: "1Gi"
     ## If defined, storageClassName: <storageClass>
