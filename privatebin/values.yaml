@@ -30,11 +30,15 @@ controller:
   kind: Deployment
   pvc:
     requests: "1Gi"
+    accessModes: "ReadWriteOnce"
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
     ## If undefined (the default) or set to null, no storageClassName spec is
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
+    ## Please be aware that gp2 supports only RWO, check with
+    ## this table:
+    ## https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
     ##
     # storageClass: "-"
 
