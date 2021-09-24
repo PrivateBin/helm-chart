@@ -350,4 +350,40 @@ entries:
     urls:
     - https://github.com/PrivateBin/helm-chart/releases/download/privatebin-0.2.3/privatebin-0.2.3.tgz
     version: 0.2.3
-generated: "2021-09-24T14:28:21.773096-04:00"
+  - apiVersion: v1
+    appVersion: 1.2.1
+    created: "2021-09-24T16:46:47.166423-04:00"
+    description: A Helm chart for installing PrivateBin
+    digest: 93f72070d5f1cfbf17eec6596042b3f56868cba375712bd8279bee21b4095fdd
+    home: https://github.com/PrivateBin/PrivateBin
+    maintainers:
+    - name: bdashrad
+    name: privatebin
+    urls:
+    - https://github.com/PrivateBin/helm-chart/releases/download/v0.2.2/privatebin-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v1
+    appVersion: 1.2.1
+    created: "2021-09-24T16:46:47.165283-04:00"
+    description: A Helm chart for installing PrivateBin
+    digest: e07e0f9fa164c145d6783039157093f51d879514a6b0514a3ab45717f02fb418
+    home: https://github.com/PrivateBin/PrivateBin
+    maintainers:
+    - name: bdashrad
+    name: privatebin
+    urls:
+    - https://github.com/PrivateBin/helm-chart/releases/download/v0.2.1/privatebin-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v1
+    appVersion: 1.2.1
+    created: "2021-09-24T16:46:47.164042-04:00"
+    description: A Helm chart for installing PrivateBin
+    digest: ad4b28a496b6f19af0699ad23dfa1755bc415652bcef04db2a82548587b1ea78
+    home: https://github.com/PrivateBin/PrivateBin
+    maintainers:
+    - name: bdashrad
+    name: privatebin
+    urls:
+    - https://github.com/PrivateBin/helm-chart/releases/download/v0.1.0/privatebin-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-09-24T16:46:47.162652-04:00"
