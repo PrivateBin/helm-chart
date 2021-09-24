@@ -13,6 +13,9 @@ image:
   # tag: latest # defaults to Chart.appVersion
   pullPolicy: IfNotPresent
 
+podAnnotations: {}
+additionalLabels: {}
+
 nameOverride: ""
 fullnameOverride: ""
 datapath: "/srv/data"
@@ -73,7 +76,6 @@ affinity: {}
 configs: {}
   # conf.php: |-
   #   ; see https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php for config
-
 
 ## Enable RBAC
 rbac:
