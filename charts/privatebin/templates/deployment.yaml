@@ -37,18 +37,6 @@ spec:
         runAsUser: {{ .Values.securityContext.runAsUser }}
         runAsGroup: {{ .Values.securityContext.runAsGroup }}
         fsGroup: {{ .Values.securityContext.fsGroup }}
-      initContainers:
-        - name: set-volume-permissions
-          image: "{{ .Values.initChownData.image.repository }}:{{ .Values.initChownData.image.tag }}"
-          imagePullPolicy: {{ .Values.initChownData.image.pullPolicy }}
-          command:
-            - chown
-            - -R
-            - "{{ .Values.securityContext.runAsUser }}:{{ .Values.securityContext.runAsGroup }}"
-            - /srv/cfg
-          volumeMounts:
-            - name: configs
-              mountPath: /srv/cfg
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
