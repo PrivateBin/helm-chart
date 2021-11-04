@@ -59,7 +59,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: privatebin.local
-      paths: []
+      paths:
+        - "/"
 
   tls: []
   #  - secretName: chart-example-tls
