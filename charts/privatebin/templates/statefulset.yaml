@@ -14,6 +14,7 @@ metadata:
       {{ toYaml .Values.additionalLabels | nindent 4 }}
     {{- end }}
 spec:
+  serviceName: {{ include "privatebin.fullname" . }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
@@ -33,6 +34,22 @@ spec:
         {{- end }}
     spec:
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
+      securityContext:
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+      initContainers:
+        - name: set-volume-permissions
+          image: "{{ .Values.initChownData.image.repository }}:{{ .Values.initChownData.image.tag }}"
+          imagePullPolicy: {{ .Values.initChownData.image.pullPolicy }}
+          command:
+            - chown
+            - -R
+            - "{{ .Values.securityContext.runAsUser }}:{{ .Values.securityContext.runAsGroup }}"
+            - /srv/cfg
+          volumeMounts:
+            - name: configs
+              mountPath: /srv/cfg
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
@@ -41,6 +58,10 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          securityContext:
+            readOnlyRootFilesystem: true
+            privileged: false
+            allowPrivilegeEscalation: false
           livenessProbe:
             httpGet:
               path: /
