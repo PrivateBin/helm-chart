@@ -43,13 +43,12 @@ spec:
           image: "{{ .Values.initChownData.image.repository }}:{{ .Values.initChownData.image.tag }}"
           imagePullPolicy: {{ .Values.initChownData.image.pullPolicy }}
           command:
-            - chown
             - -R
             - "{{ .Values.securityContext.runAsUser }}:{{ .Values.securityContext.runAsGroup }}"
-            - /srv/cfg
+            - /mnt
           volumeMounts:
-            - name: configs
-              mountPath: /srv/cfg
+            - name: storage
+              mountPath: /mnt
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
