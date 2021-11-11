@@ -41,12 +41,6 @@ controller:
     ##
     # storageClass: "-"
 
-initChownData:
-  image:
-    repository: privatebin/chown
-    tag: 1.34.1-musl-1.2.2-r3
-    pullPolicy: IfNotPresent
-
 securityContext:
   runAsUser: 65534
   runAsGroup: 82
