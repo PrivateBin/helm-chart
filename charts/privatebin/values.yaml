@@ -41,12 +41,6 @@ controller:
     ##
     # storageClass: "-"
 
-initChownData:
-  image:
-    repository: busybox
-    tag: 1.31.1
-    pullPolicy: IfNotPresent
-
 securityContext:
   runAsUser: 65534
   runAsGroup: 82
