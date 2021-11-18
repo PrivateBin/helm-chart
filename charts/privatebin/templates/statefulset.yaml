@@ -14,7 +14,6 @@ metadata:
       {{ toYaml .Values.additionalLabels | nindent 4 }}
     {{- end }}
 spec:
-  serviceName: {{ include "privatebin.fullname" . }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
