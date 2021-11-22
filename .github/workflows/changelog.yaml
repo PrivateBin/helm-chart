@@ -11,9 +11,21 @@ on:
       - main
 
 jobs:
-  changelog:
+  generate_changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: bdashrad/git-chlog-action@v2.0.0
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Generate changelog
+        id: gen_changelog
+        uses: bdashrad/git-chglog-action@v2.0.0
         with:
           next_version: "0.11.0"
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: steps.gen_changelog.outputs.changelog
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' }}
