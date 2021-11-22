@@ -26,6 +26,7 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v1
         with:
-          message: steps.gen_changelog.outputs.changelog
+          message: ${{ steps.gen_changelog.outputs.changelog }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ github.event_name == 'pull_request' }}
+        if: github.event_name == 'pull_request' &&
+            steps.gen_changelog.outputs.changelog != ""
