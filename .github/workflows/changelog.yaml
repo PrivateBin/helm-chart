@@ -28,5 +28,6 @@ jobs:
         with:
           message: ${{ steps.gen_changelog.outputs.changelog }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.event_name == 'pull_request' &&
-            steps.gen_changelog.outputs.changelog != ""
+        if: |
+          github.event_name == 'pull_request' &&
+          steps.gen_changelog.outputs.changelog != ''
