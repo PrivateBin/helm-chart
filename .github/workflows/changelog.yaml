@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
       - name: Generate changelog
         id: gen_changelog
-        uses: bdashrad/git-chglog-action@v2.0.0
+        uses: bdashrad/git-chglog-action@v2.0.1
         with:
           next_version: "0.11.0"
       - name: Comment PR
