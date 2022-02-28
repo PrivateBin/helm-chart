@@ -14,12 +14,12 @@ metadata:
       {{ toYaml .Values.additionalLabels | nindent 4 }}
     {{- end }}
 spec:
+  replicas: {{ .Values.replicaCount }}
   serviceName: {{ include "privatebin.fullname" . }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "privatebin.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
-  serviceName: {{ include "privatebin.fullname" . }} 
+      app.kubernetes.io/instance: {{ .Release.Name }} 
   template:
     metadata:
       labels:
