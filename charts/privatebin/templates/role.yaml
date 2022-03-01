@@ -9,14 +9,14 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 rules:
-{{- if .Values.podSecurityPolicy.enabled }}
-- apiGroups:
-  - policy
-  resourceNames:
-  - {{ include "privatebin.fullname" . }}
-  resources:
-  - podsecuritypolicies
-  verbs:
-  - use
-{{- end }}
+  {{- if .Values.podSecurityPolicy.enabled }}
+  - apiGroups:
+    - policy
+    resourceNames:
+    - {{ include "privatebin.fullname" . }}
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  {{- end }}
 {{- end -}}
