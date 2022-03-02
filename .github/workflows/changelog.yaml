@@ -22,7 +22,7 @@ jobs:
         id: get_chart_version
         uses: mikefarah/yq@v4.21.1
         with:
-          cmd: yq '.version' charts/priavtebin/Chart.yaml
+          cmd: yq '.version' 'charts/privatebin/Chart.yaml'
       - name: Generate changelog
         id: gen_changelog
         uses: bdashrad/git-chglog-action@v2.0.3
