@@ -62,9 +62,9 @@ spec:
           volumeMounts:
             - name: configs
               mountPath: /srv/cfg
-            {{- if .Values.emptyDir }}
-            - name: ephemeral
-              mountPath: /ephemeral/secret
+            {{- if .Values.controller.emptyDir }}
+            - name: storage
+              mountPath: {{ .Values.datapath }}
             {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -82,8 +82,8 @@ spec:
         - name: configs
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
-        {{- if .Values.emptyDir }}
-        - name: ephemeral
+        {{- if .Values.controller.emptyDir }}
+        - name: storage
           emptyDir: {}
         {{- end }}
 {{- end }}

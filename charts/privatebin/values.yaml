@@ -44,7 +44,9 @@ controller:
     ## https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
     ##
     # storageClass: "-"
-
+  # For deployment controller, an emptyDir can be enable in the pod for writing data
+  # with the following option
+  emptyDir: true
 securityContext:
   runAsUser: 65534
   runAsGroup: 82
@@ -101,4 +103,3 @@ rbac:
 podSecurityPolicy:
   enabled: false
   annotations: []
-emptyDir: true
