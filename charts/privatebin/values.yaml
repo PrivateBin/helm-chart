@@ -101,3 +101,4 @@ rbac:
 podSecurityPolicy:
   enabled: false
   annotations: []
+emptyDir: true
