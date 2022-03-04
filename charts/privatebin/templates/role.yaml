@@ -11,12 +11,12 @@ metadata:
 rules:
   {{- if .Values.podSecurityPolicy.enabled }}
   - apiGroups:
-    - policy
+      - policy
     resourceNames:
-    - {{ include "privatebin.fullname" . }}
+      - {{ include "privatebin.fullname" . }}
     resources:
-    - podsecuritypolicies
+      - podsecuritypolicies
     verbs:
-    - use
+      - use
   {{- end }}
 {{- end -}}
