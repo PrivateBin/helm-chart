@@ -41,7 +41,7 @@ See values.yaml for full documentation
 | `controller.kind`            | Controller kind (StatefulSet, Deployment, Both)    | `Deployment`                                     |
 | `controller.pvc.requests`    | Requests for PVC (only with StatefulSet)           | `1Gi`                                            |
 | `controller.pvc.storageClass`| StorageClass to use for PVC (only with StatefulSet)| `""`                                             |
-| `controller.emptyDir`        | EmptyDir for storage (only for Deployment)         | `false`                                          |
+| `controller.emptyDir`        | EmptyDir for storage (only for Deployment)         | `true`                                          |
 | `service.type`               | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
 | `service.port`               | Ports exposed by service                           | `80`                                             |
 | `service.portName`           | Name of exposed port, becomes LB protocol on ELB   | `http`                                           |
