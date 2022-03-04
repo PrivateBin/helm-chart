@@ -67,3 +67,23 @@ jobs:
           charts_dir: charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Get chart version
+        id: get_chart_version
+        uses: mikefarah/yq@v4.21.1
+        with:
+          cmd: yq '.version' 'charts/privatebin/Chart.yaml'
+
+      - name: Generate changelog for release
+        id: gen_changelog
+        uses: bdashrad/git-chglog-action@v2.0.3
+        with:
+          tag: privatebin-${{ steps.get_chart_version.outputs.result }}
+
+      - name: Update Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          body: ${{ steps.changelog_reader.outputs.changes }}
+          tag: ${{matrix.tag}}
+          token: ${{ secrets.GITHUB_TOKEN }}
