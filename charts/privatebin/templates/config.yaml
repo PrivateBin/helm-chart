@@ -11,5 +11,5 @@ metadata:
 data:
 {{- range $key, $value := .Values.configs }}
   {{ $key }}: |-
-{{ $value | indent 4 }}
+    {{- $value | nindent 4 }}
 {{- end }}
