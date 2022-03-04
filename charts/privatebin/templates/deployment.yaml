@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     {{- if .Values.additionalLabels }}
-      {{ toYaml .Values.additionalLabels | nindent 4 }}
+      {{- toYaml .Values.additionalLabels | nindent 4 }}
     {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -25,11 +25,11 @@ spec:
         app.kubernetes.io/name: {{ include "privatebin.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
         {{- if .Values.additionalLabels }}
-          {{ toYaml .Values.additionalLabels | nindent 8 }}
+          {{- toYaml .Values.additionalLabels | nindent 8 }}
         {{- end }}
       {{- if .Values.podAnnotations }}
       annotations:
-        {{ toYaml .Values.podAnnotations | nindent 8 }}
+        {{- toYaml .Values.podAnnotations | nindent 8 }}
       {{- end }}
     spec:
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
