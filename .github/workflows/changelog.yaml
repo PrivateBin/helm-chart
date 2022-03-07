@@ -45,6 +45,7 @@ jobs:
             ${{ steps.gen_pr_changelog.outputs.changelog }}
             <details>
               <summary>Full Changelog diff (Click to Expand)</summary>
+
             ```diff
             ${{ steps.diff_changelog.outputs.diff }}
             ```
