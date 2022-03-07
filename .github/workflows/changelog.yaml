@@ -23,16 +23,33 @@ jobs:
         uses: mikefarah/yq@v4.21.1
         with:
           cmd: yq '.version' 'charts/privatebin/Chart.yaml'
-      - name: Generate changelog
+      - name: Generate PR changelog
+        id: gen_pr_changelog
+        uses: bdashrad/git-chglog-action@v2.0.3
+        with:
+          next_version: privatebin-${{ steps.get_chart_version.outputs.result }}
+      - name: Generate full changelog
         id: gen_changelog
         uses: bdashrad/git-chglog-action@v2.0.3
         with:
           next_version: privatebin-${{ steps.get_chart_version.outputs.result }}
+          filename: CHANGELOG.md
+      - name: Diff CHANGELOG.md
+        id: diff_changelog
+        run: scripts/diff-changelog.sh
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: mshick/add-pr-comment@v1
         with:
-          message: ${{ steps.gen_changelog.outputs.changelog }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: |
+            ${{ steps.gen_pr_changelog.outputs.changelog }}
+            <details>
+              <summary>Full Changelog diff (Click to Expand)</summary>
+            ```diff
+            ${{ steps.diff_changelog.outputs.diff }}
+            ```
+            </details>
+          allow-repeats: false
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         if: |
           github.event_name == 'pull_request' &&
           steps.gen_changelog.outputs.changelog != ''
