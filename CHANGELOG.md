@@ -9,11 +9,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 <a name="1.0.0"></a>
-## [1.0.0] - 2021-11-18
+## [1.0.0] - 2022-03-07
+### Feat
+- add changelog
+- comment changelog output
+
+
+<a name="privatebin-0.12.1"></a>
+## [privatebin-0.12.1] - 2022-03-04
 ### BREAKING CHANGE
 
 StatefulSet spec.volumeClaimTemplates.spec.accessModes
 now defaults to ReadWriteOnce instead of ReadWriteMany
+
+* add a changelog
+
+* remove testing for deprecated k8s version 1.19
+
+* changelog is in different branch
+
+
+<a name="privatebin-0.12.0"></a>
+## [privatebin-0.12.0] - 2022-03-04
+### Feat
+- drop 1.19 and bump other kind kubernetes versions ([#65](https://github.com/PrivateBin/helm-chart/issues/65))
+
+
+<a name="privatebin-0.11.0"></a>
+## [privatebin-0.11.0] - 2022-02-24
+### Feat
+- add replicas to statefulset
+
+
+<a name="privatebin-0.10.2"></a>
+## [privatebin-0.10.2] - 2022-02-23
+### Pull Requests
+- Merge pull request [#59](https://github.com/PrivateBin/helm-chart/issues/59) from jeff-french/master
 
 
 <a name="privatebin-0.10.1"></a>
@@ -170,7 +201,11 @@ now defaults to ReadWriteOnce instead of ReadWriteMany
 ## v0.1.0 - 2019-05-09
 
 [Unreleased]: https://github.com/PrivateBin/helm-chart/compare/1.0.0...HEAD
-[1.0.0]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.10.1...1.0.0
+[1.0.0]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.12.1...1.0.0
+[privatebin-0.12.1]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.12.0...privatebin-0.12.1
+[privatebin-0.12.0]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.11.0...privatebin-0.12.0
+[privatebin-0.11.0]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.10.2...privatebin-0.11.0
+[privatebin-0.10.2]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.10.1...privatebin-0.10.2
 [privatebin-0.10.1]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.10.0...privatebin-0.10.1
 [privatebin-0.10.0]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.9.1...privatebin-0.10.0
 [privatebin-0.9.1]: https://github.com/PrivateBin/helm-chart/compare/privatebin-0.9.0...privatebin-0.9.1
