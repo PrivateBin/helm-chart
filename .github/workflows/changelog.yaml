@@ -28,6 +28,7 @@ jobs:
         uses: bdashrad/git-chglog-action@v2.0.3
         with:
           next_version: privatebin-${{ steps.get_chart_version.outputs.result }}
+          tag: privatebin-${{ steps.get_chart_version.outputs.result }}
       - name: Generate full changelog
         id: gen_changelog
         uses: bdashrad/git-chglog-action@v2.0.3
