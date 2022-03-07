@@ -9,9 +9,9 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
-{{- if .Values.podSecurityPolicy.annotations }}
-{{ toYaml .Values.podSecurityPolicy.annotations | indent 4 }}
-{{- end }}
+  {{- if .Values.podSecurityPolicy.annotations }}
+    {{- toYaml .Values.podSecurityPolicy.annotations | nindent 4 }}
+  {{- end }}
 spec:
   privileged: false
   allowPrivilegeEscalation: false
