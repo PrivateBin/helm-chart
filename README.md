@@ -39,6 +39,7 @@ See values.yaml for full documentation
 | `fullnameOverride`           | FullName Override                                  | `""`                                             |
 | `datapath`                   | Datapath for persistent data                       | `/srv/data`                                      |
 | `controller.kind`            | Controller kind (StatefulSet, Deployment, Both)    | `Deployment`                                     |
+| `controller.pvc.accessModes` | Access Mode for PVC (only with StatefulSet)        | `ReadWriteOnce`                                  |
 | `controller.pvc.requests`    | Requests for PVC (only with StatefulSet)           | `1Gi`                                            |
 | `controller.pvc.storageClass`| StorageClass to use for PVC (only with StatefulSet)| `""`                                             |
 | `service.type`               | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
@@ -54,9 +55,12 @@ See values.yaml for full documentation
 | `nodeSelector`               | Node selector                                      | `{}`                                             |
 | `tolerations`                | Tolerations                                        | `[]`                                             |
 | `affinity`                   | Affinity or Anti-Affinity                          | `{}`                                             |
-| `configs`                    | List of files to put in cfg path                   | `{}`                                             |
+| `configs`                    | Optional Privatebin configuration file             | `{}`                                             |
+| `podAnnotations`             | Additional annotations to add to the pods          | `{}`                                             |
+| `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
 
 ## Upgrades
+
 Standard helm upgrade process applies.
 
 Chart release 0.3.0+ defaults to the [image](https://github.com/PrivateBin/docker-nginx-fpm-alpine/releases/tag/1.3.0-alpine3.10) for to PrivateBin 1.3.0. You can find the release notes at https://github.com/PrivateBin/PrivateBin/releases/tag/1.3.
