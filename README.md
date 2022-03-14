@@ -49,7 +49,9 @@ See values.yaml for full documentation
 | `ingress.enabled`            | Enables Ingress                                    | `false`                                          |
 | `ingress.annotations`        | Ingress annotations                                | `{}`                                             |
 | `ingress.hosts.host`         | Ingress accepted hostnames                         | `privatebin.local`                               |
-| `ingress.hosts.path`         | Ingress path                                       | `\`                                              |
+| `ingress.hosts.paths`        | Ingress paths                                      | `[]`                                             |
+| `ingress.hosts.paths.0.path` | Ingress path                                       | `/`                                              |
+| `ingress.hosts.paths.0.type` | Ingress path type                                  | `Prefix`                                         |
 | `ingress.tls`                | Ingress TLS configuration                          | `[]`                                             |
 | `resources`                  | Pod resource requests & limits                     | `{}`                                             |
 | `nodeSelector`               | Node selector                                      | `{}`                                             |
