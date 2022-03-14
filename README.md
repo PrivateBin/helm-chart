@@ -48,7 +48,9 @@ See values.yaml for full documentation
 | `ingress.enabled`            | Enables Ingress                                    | `false`                                          |
 | `ingress.annotations`        | Ingress annotations                                | `{}`                                             |
 | `ingress.hosts.host`         | Ingress accepted hostnames                         | `privatebin.local`                               |
-| `ingress.hosts.path`         | Ingress path                                       | `\`                                              |
+| `ingress.hosts.paths`        | Ingress paths                                      | `[]`                                             |
+| `ingress.hosts.paths.0.path` | Ingress path                                       | `/`                                              |
+| `ingress.hosts.paths.0.type` | Ingress path type                                  | `Prefix`                                         |
 | `ingress.tls`                | Ingress TLS configuration                          | `[]`                                             |
 | `resources`                  | Pod resource requests & limits                     | `{}`                                             |
 | `nodeSelector`               | Node selector                                      | `{}`                                             |
@@ -57,6 +59,7 @@ See values.yaml for full documentation
 | `configs`                    | List of files to put in cfg path                   | `{}`                                             |
 
 ## Upgrades
+
 Standard helm upgrade process applies.
 
 Chart release 0.3.0+ defaults to the [image](https://github.com/PrivateBin/docker-nginx-fpm-alpine/releases/tag/1.3.0-alpine3.10) for to PrivateBin 1.3.0. You can find the release notes at https://github.com/PrivateBin/PrivateBin/releases/tag/1.3.
