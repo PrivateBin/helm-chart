@@ -58,7 +58,8 @@ ingress:
   hosts:
     - host: privatebin.local
       paths:
-        - "/"
+        - path: "/"
+          pathType: Prefix
 
   tls: []
   #  - secretName: chart-example-tls
