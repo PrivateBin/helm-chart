@@ -1,0 +1,57 @@
+---
+name: Create changelog
+on: 
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  generate_changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get chart version
+        id: get_chart_version
+        uses: mikefarah/yq@v4.21.1
+        with:
+          cmd: yq '.version' 'charts/privatebin/Chart.yaml'
+      - name: Generate PR changelog
+        id: gen_pr_changelog
+        uses: bdashrad/git-chglog-action@v2.0.3
+        with:
+          next_version: privatebin-${{ steps.get_chart_version.outputs.result }}
+          tag: privatebin-${{ steps.get_chart_version.outputs.result }}
+      - name: Generate full changelog
+        id: gen_changelog
+        uses: bdashrad/git-chglog-action@v2.0.3
+        with:
+          next_version: privatebin-${{ steps.get_chart_version.outputs.result }}
+          filename: CHANGELOG.md
+      - name: Diff CHANGELOG.md
+        id: diff_changelog
+        run: scripts/diff-changelog.sh
+      - name: Comment PR
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            ${{ steps.gen_pr_changelog.outputs.changelog }}
+            <details>
+              <summary>Full Changelog diff (Click to Expand)</summary>
+
+            ```diff
+            ${{ steps.diff_changelog.outputs.diff }}
+            ```
+            </details>
+          allow-repeats: false
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        if: |
+          github.event_name == 'pull_request' &&
+          steps.gen_changelog.outputs.changelog != ''
