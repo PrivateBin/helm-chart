@@ -5,7 +5,7 @@ description: A Helm chart for installing PrivateBin
 name: privatebin
 home: https://privatebin.info/
 icon: https://raw.githubusercontent.com/PrivateBin/assets/master/images/preview/icon.png
-version: 0.14.0
+version: 0.15.0
 maintainers:
   - name: bdashrad
     email: bdashrad@gmail.com
