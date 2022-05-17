@@ -81,8 +81,8 @@ spec:
       {{- end }}
       volumes:
         - name: configs
-          configMap:
-            name: {{ include "privatebin.fullname" . }}-configs
+          secret:
+            secretName: {{ include "privatebin.fullname" . }}-configs
   volumeClaimTemplates:
     - metadata:
         name: storage
