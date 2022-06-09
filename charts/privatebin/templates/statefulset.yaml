@@ -65,6 +65,12 @@ spec:
               mountPath: /srv/cfg
             - name: storage
               mountPath: {{ .Values.datapath }}
+            - name: run
+              mountPath: /run
+            - name: tmp
+              mountPath: /tmp
+            - name: nginx-cache
+              mountPath: /var/lib/nginx/tmp
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -81,6 +87,14 @@ spec:
         - name: configs
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
+        - name: run
+          emptyDir:
+            medium: "Memory"
+        - name: tmp
+          emptyDir:
+            medium: "Memory"
+        - name: nginx-cache
+          emptyDir: {}
   volumeClaimTemplates:
     - metadata:
         name: storage
