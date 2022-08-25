@@ -47,7 +47,7 @@ spec:
               containerPort: 8080
               protocol: TCP
           securityContext:
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
             privileged: false
             allowPrivilegeEscalation: false
           livenessProbe:
