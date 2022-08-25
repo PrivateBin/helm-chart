@@ -57,6 +57,7 @@ securityContext:
   runAsUser: 65534
   runAsGroup: 82
   fsGroup: 82
+  readOnlyRootFilesystem: true
 
 ingress:
   enabled: false

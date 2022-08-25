@@ -33,8 +33,6 @@ spec:
         {{- toYaml .Values.podAnnotations | nindent 8 }}
       {{- end }}
     spec:
-      securityContext:
-        fsGroup: 82
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
@@ -55,7 +53,7 @@ spec:
               containerPort: 8080
               protocol: TCP
           securityContext:
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
             privileged: false
             allowPrivilegeEscalation: false
           livenessProbe:
