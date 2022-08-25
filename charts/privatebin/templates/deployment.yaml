@@ -33,10 +33,17 @@ spec:
       {{- end }}
     spec:
       serviceAccountName: {{ include "privatebin.serviceAccountName" . }}
+      automountServiceAccountToken: false
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
         runAsGroup: {{ .Values.securityContext.runAsGroup }}
         fsGroup: {{ .Values.securityContext.fsGroup }}
+      {{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.image.pullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
@@ -66,6 +73,12 @@ spec:
             - name: storage
               mountPath: {{ .Values.datapath }}
             {{- end }}
+            - name: run
+              mountPath: /run
+            - name: tmp
+              mountPath: /tmp
+            - name: nginx-cache
+              mountPath: /var/lib/nginx/tmp
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -86,4 +99,12 @@ spec:
         - name: storage
           emptyDir: {}
         {{- end }}
+        - name: run
+          emptyDir:
+            medium: "Memory"
+        - name: tmp
+          emptyDir:
+            medium: "Memory"
+        - name: nginx-cache
+          emptyDir: {}
 {{- end }}
