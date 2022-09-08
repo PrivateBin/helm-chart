@@ -69,6 +69,10 @@ spec:
           volumeMounts:
             - name: configs
               mountPath: /srv/cfg
+            {{- if gt ( .Values.tpls | keys | len ) 0 }}
+            - name: tpls
+              mountPath: /srv/tpl
+            {{- end }}
             {{- if .Values.controller.emptyDir }}
             - name: storage
               mountPath: {{ .Values.datapath }}
@@ -95,6 +99,11 @@ spec:
         - name: configs
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
+        {{- if gt ( .Values.tpls | keys | len ) 0 }}
+        - name: tpls
+          configMap:
+            name: {{ include "privatebin.fullname" . }}-tpls
+        {{- end }}
         {{- if .Values.controller.emptyDir }}
         - name: storage
           emptyDir: {}
