@@ -59,6 +59,20 @@ securityContext:
   fsGroup: 82
   readOnlyRootFilesystem: true
 
+extraVolumes: []
+  # Optionally specify extra list of additional volumes for PrivateBin pod. 
+  # Example 
+  # - name: nginx-params
+  #   configMap:
+  #     name: nginx-params
+
+extraVolumeMounts: []
+  # Optionally specify extra list of additional volumeMounts for PrivateBin pod.
+  # Example
+  # - mountPath: /etc/nginx/server.d
+  #   name: nginx-params
+
+
 ingress:
   enabled: false
   annotations: {}
