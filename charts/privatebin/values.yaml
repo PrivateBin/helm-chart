@@ -60,8 +60,8 @@ securityContext:
   readOnlyRootFilesystem: true
 
 extraVolumes: []
-  # Optionally specify extra list of additional volumes for PrivateBin pod. 
-  # Example 
+  # Optionally specify extra list of additional volumes for PrivateBin pod.
+  # Example
   # - name: nginx-params
   #   configMap:
   #     name: nginx-params
