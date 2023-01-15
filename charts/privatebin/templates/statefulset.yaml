@@ -78,6 +78,9 @@ spec:
               mountPath: /tmp
             - name: nginx-cache
               mountPath: /var/lib/nginx/tmp
+          {{- if .Values.extraVolumeMounts }}
+          {{- include "privatebin.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -102,6 +105,9 @@ spec:
             medium: "Memory"
         - name: nginx-cache
           emptyDir: {}
+      {{- if .Values.extraVolumes }}
+      {{- include "privatebin.tplvalues.render" (dict "value" .Values.extraVolumes "context" $) | nindent 8 }}
+      {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: storage

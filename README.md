@@ -61,6 +61,9 @@ See values.yaml for full documentation
 | `configs`                    | Optional Privatebin configuration file             | `{}`                                             |
 | `podAnnotations`             | Additional annotations to add to the pods          | `{}`                                             |
 | `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
+| `extraVolumes`               | Additional volumes to add to the pods              | `[]`                                             |
+| `extraVolumeMounts`          | Additional volume mounts to add to the pods        | `[]`                                             |
+
 
 ## Upgrades
 
