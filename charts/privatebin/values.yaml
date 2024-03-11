@@ -57,7 +57,11 @@ securityContext:
   runAsUser: 65534
   runAsGroup: 82
   fsGroup: 82
+
+podSecurityContext:
   readOnlyRootFilesystem: true
+  privileged: false
+  allowPrivilegeEscalation: false
 
 extraVolumes: []
   # Optionally specify extra list of additional volumes for PrivateBin pod.
