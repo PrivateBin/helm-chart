@@ -58,6 +58,7 @@ See values.yaml for full documentation
 | `nodeSelector`               | Node selector                                      | `{}`                                             |
 | `tolerations`                | Tolerations                                        | `[]`                                             |
 | `affinity`                   | Affinity or Anti-Affinity                          | `{}`                                             |
+| `topologySpreadConstraints`  | Topology Spread Constraints                        | `[]`                                             |
 | `configs`                    | Optional Privatebin configuration file             | `{}`                                             |
 | `podAnnotations`             | Additional annotations to add to the pods          | `{}`                                             |
 | `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
