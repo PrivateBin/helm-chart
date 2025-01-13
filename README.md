@@ -20,7 +20,7 @@ helm install privatebin/privatebin
 
     ```bash
     helm install \
-      --name your-release \
+      your-release \
       --values your-values.yaml \
       privatebin/privatebin
     ```
@@ -70,4 +70,49 @@ See values.yaml for full documentation
 
 Standard helm upgrade process applies.
 
-Chart release 0.3.0+ defaults to the [image](https://github.com/PrivateBin/docker-nginx-fpm-alpine/releases/tag/1.3.0-alpine3.10) for to PrivateBin 1.3.0. You can find the release notes at https://github.com/PrivateBin/PrivateBin/releases/tag/1.3.
+Chart releases default to the latest [stable image](https://github.com/PrivateBin/docker-nginx-fpm-alpine/tags) for PrivateBin at the time. You can find the release notes at https://github.com/PrivateBin/PrivateBin/releases.
+
+## Running administrative scripts
+
+The image includes two administrative scripts, which you can use to migrate from one storage backend to another, delete pastes by ID, removing empty directories when using the Filesystem backend, to purge all expired pastes and display statistics. These can be executed within the running image or by running the commands as alternative entrypoints with the same volumes attached as in the running service image, the former option is recommended.
+
+```console
+# assuming you named your install "your-release":
+
+$ POD_NAME=$(kubectl get pod -l "app=your-release" -o jsonpath='{.items[0].metadata.name}')
+$ kubectl exec "${POD_NAME}" -t -- administration --help
+Usage:
+  administration [--delete <paste id> | --empty-dirs | --help | --purge | --statistics]
+
+Options:
+  -d, --delete      deletes the requested paste ID
+  -e, --empty-dirs  removes empty directories (only if Filesystem storage is
+                    configured)
+  -h, --help        displays this help message
+  -p, --purge       purge all expired pastes
+  -s, --statistics  reads all stored pastes and comments and reports statistics
+
+$ kubectl exec "${POD_NAME}" -t -- migrate --help
+migrate - Copy data between PrivateBin backends
+
+Usage:
+  migrate [--delete-after] [--delete-during] [-f] [-n] [-v] srcconfdir
+          [<dstconfdir>]
+  migrate [-h|--help]
+
+Options:
+  --delete-after   delete data from source after all pastes and comments have
+                   successfully been copied to the destination
+  --delete-during  delete data from source after the current paste and its
+                   comments have successfully been copied to the destination
+  -f               forcefully overwrite data which already exists at the
+                   destination
+  -h, --help       displays this help message
+  -n               dry run, do not copy data
+  -v               be verbose
+  <srcconfdir>     use storage backend configuration from conf.php found in
+                   this directory as source
+  <dstconfdir>     optionally, use storage backend configuration from conf.php
+                   found in this directory as destination; defaults to:
+                   /srv/bin/../cfg/conf.php
+```
