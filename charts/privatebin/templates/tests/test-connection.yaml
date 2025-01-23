@@ -8,6 +8,9 @@ metadata:
     helm.sh/chart: {{ include "privatebin.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- if .Values.additionalLabels }}
+      {{- toYaml .Values.additionalLabels | nindent 4 }}
+    {{- end }}
   annotations:
     "helm.sh/hook": test
 spec:
