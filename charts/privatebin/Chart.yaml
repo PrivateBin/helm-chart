@@ -1,12 +1,12 @@
 ---
 apiVersion: v2
-appVersion: 1.7.5
+appVersion: 1.7.6
 description: A Helm chart for installing PrivateBin
 name: privatebin
 home: https://privatebin.info/
 icon: https://raw.githubusercontent.com/PrivateBin/assets/master/images/preview/icon.png
 type: application
-version: 0.22.1
+version: 0.22.2
 maintainers:
   - name: bdashrad
     email: bdashrad@gmail.com
@@ -20,7 +20,7 @@ keywords:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Upgrade PrivateBin to 1.7.5
+      description: Upgrade PrivateBin to 1.7.6
   artifacthub.io/images: |
     - name: privatebin
-      image: privatebin/nginx-fpm-alpine:1.7.5
+      image: privatebin/nginx-fpm-alpine:1.7.6
