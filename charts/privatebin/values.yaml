@@ -31,6 +31,7 @@ service:
   port: 80
   portName: http
   annotations: {}
+  externalTrafficPolicy: Cluster
   ## Limit load balancer source ips to list of CIDRs (where available)
   # loadBalancerSourceRanges: []
 
