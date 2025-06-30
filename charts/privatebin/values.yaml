@@ -131,3 +131,6 @@ rbac:
 podSecurityPolicy:
   enabled: false
   annotations: []
+
+strategy:
+  type: Recreate
