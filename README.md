@@ -18,53 +18,53 @@ helm install privatebin/privatebin
 
 1. Deploy with helm
 
-    ```bash
-    helm install \
-      your-release \
-      --values your-values.yaml \
-      privatebin/privatebin
-    ```
+   ```bash
+   helm install \
+     your-release \
+     --values your-values.yaml \
+     privatebin/privatebin
+   ```
 
 ## Configuration
 
 See values.yaml for full documentation
 
-|              Parameter       |                    Description                     |                     Default                      |
-| ---------------------------- | -------------------------------------------------- | ------------------------------------------------ |
-| `replicaCount`               | Number of replicas                                 | `1`                                              |
-| `image.repository`           | Container image name                               | `privatebin/nginx-fpm-alpine`                    |
-| `image.tag`                  | Container image tag                                | ``                                               |
-| `image.pullPolicy`           | Container image pull policy                        | `IfNotPresent`                                   |
-| `nameOverride`               | Name Override                                      | `""`                                             |
-| `fullnameOverride`           | FullName Override                                  | `""`                                             |
-| `datapath`                   | Datapath for persistent data                       | `/srv/data`                                      |
-| `controller.kind`            | Controller kind (StatefulSet, Deployment, Both)    | `Deployment`                                     |
-| `controller.pvc.accessModes` | Access Mode for PVC (only with StatefulSet)        | `ReadWriteOnce`                                  |
-| `controller.pvc.requests`    | Requests for PVC (only with StatefulSet)           | `1Gi`                                            |
-| `controller.pvc.storageClass`| StorageClass to use for PVC (only with StatefulSet)| `""`                                             |
-| `controller.emptyDir`        | EmptyDir for storage (only for Deployment)         | `false`                                          |
-| `service.type`               | Service type (ClusterIP, NodePort or LoadBalancer) | `ClusterIP`                                      |
-| `service.port`               | Ports exposed by service                           | `80`                                             |
-| `service.portName`           | Name of exposed port, becomes LB protocol on ELB   | `http`                                           |
-| `service.annotations`        | Service annotations                                | `{}`                                             |
-| `ingress.enabled`            | Enables Ingress                                    | `false`                                          |
-| `ingress.annotations`        | Ingress annotations                                | `{}`                                             |
-| `ingress.hosts.host`         | Ingress accepted hostnames                         | `privatebin.local`                               |
-| `ingress.hosts.paths`        | Ingress paths                                      | `[]`                                             |
-| `ingress.hosts.paths.0.path` | Ingress path                                       | `/`                                              |
-| `ingress.hosts.paths.0.type` | Ingress path type                                  | `Prefix`                                         |
-| `ingress.tls`                | Ingress TLS configuration                          | `[]`                                             |
-| `resources`                  | Pod resource requests & limits                     | `{}`                                             |
-| `nodeSelector`               | Node selector                                      | `{}`                                             |
-| `tolerations`                | Tolerations                                        | `[]`                                             |
-| `affinity`                   | Affinity or Anti-Affinity                          | `{}`                                             |
-| `topologySpreadConstraints`  | Topology Spread Constraints                        | `[]`                                             |
-| `configs`                    | Optional Privatebin configuration file             | `{}`                                             |
-| `podAnnotations`             | Additional annotations to add to the pods          | `{}`                                             |
-| `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
-| `extraVolumes`               | Additional volumes to add to the pods              | `[]`                                             |
-| `extraVolumeMounts`          | Additional volume mounts to add to the pods        | `[]`                                             |
-
+| Parameter                     | Description                                         | Default                       |
+| ----------------------------- | --------------------------------------------------- | ----------------------------- |
+| `replicaCount`                | Number of replicas                                  | `1`                           |
+| `image.repository`            | Container image name                                | `privatebin/nginx-fpm-alpine` |
+| `image.tag`                   | Container image tag                                 | ``                            |
+| `image.pullPolicy`            | Container image pull policy                         | `IfNotPresent`                |
+| `nameOverride`                | Name Override                                       | `""`                          |
+| `fullnameOverride`            | FullName Override                                   | `""`                          |
+| `datapath`                    | Datapath for persistent data                        | `/srv/data`                   |
+| `controller.kind`             | Controller kind (StatefulSet, Deployment, Both)     | `Deployment`                  |
+| `controller.pvc.accessModes`  | Access Mode for PVC (only with StatefulSet)         | `ReadWriteOnce`               |
+| `controller.pvc.requests`     | Requests for PVC (only with StatefulSet)            | `1Gi`                         |
+| `controller.pvc.storageClass` | StorageClass to use for PVC (only with StatefulSet) | `""`                          |
+| `controller.emptyDir`         | EmptyDir for storage (only for Deployment)          | `false`                       |
+| `service.type`                | Service type (ClusterIP, NodePort or LoadBalancer)  | `ClusterIP`                   |
+| `service.port`                | Ports exposed by service                            | `80`                          |
+| `service.portName`            | Name of exposed port, becomes LB protocol on ELB    | `http`                        |
+| `service.annotations`         | Service annotations                                 | `{}`                          |
+| `ingress.enabled`             | Enables Ingress                                     | `false`                       |
+| `ingress.annotations`         | Ingress annotations                                 | `{}`                          |
+| `ingress.hosts.host`          | Ingress accepted hostnames                          | `privatebin.local`            |
+| `ingress.hosts.paths`         | Ingress paths                                       | `[]`                          |
+| `ingress.hosts.paths.0.path`  | Ingress path                                        | `/`                           |
+| `ingress.hosts.paths.0.type`  | Ingress path type                                   | `Prefix`                      |
+| `ingress.tls`                 | Ingress TLS configuration                           | `[]`                          |
+| `resources`                   | Pod resource requests & limits                      | `{}`                          |
+| `nodeSelector`                | Node selector                                       | `{}`                          |
+| `tolerations`                 | Tolerations                                         | `[]`                          |
+| `affinity`                    | Affinity or Anti-Affinity                           | `{}`                          |
+| `strategy`                    | Deployment strategy                                 | `{ type: Replace }`           |
+| `topologySpreadConstraints`   | Topology Spread Constraints                         | `[]`                          |
+| `configs`                     | Optional Privatebin configuration file              | `{}`                          |
+| `podAnnotations`              | Additional annotations to add to the pods           | `{}`                          |
+| `additionalLabels`            | Additional labels to add to resources               | `{}`                          |
+| `extraVolumes`                | Additional volumes to add to the pods               | `[]`                          |
+| `extraVolumeMounts`           | Additional volume mounts to add to the pods         | `[]`                          |
 
 ## Upgrades
 
