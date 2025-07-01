@@ -6,7 +6,7 @@ name: privatebin
 home: https://privatebin.info/
 icon: https://raw.githubusercontent.com/PrivateBin/assets/master/images/preview/icon.png
 type: application
-version: 0.22.1
+version: 0.23.1
 maintainers:
   - name: bdashrad
     email: bdashrad@gmail.com
