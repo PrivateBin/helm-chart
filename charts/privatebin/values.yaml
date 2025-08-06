@@ -133,4 +133,4 @@ podSecurityPolicy:
   annotations: []
 
 strategy:
-  type: Recreate
+  type: RollingUpdate
