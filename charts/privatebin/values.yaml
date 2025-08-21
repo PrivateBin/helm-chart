@@ -30,6 +30,7 @@ service:
   type: ClusterIP
   port: 80
   portName: http
+  labels: {}
   annotations: {}
   ## Limit load balancer source ips to list of CIDRs (where available)
   # loadBalancerSourceRanges: []
