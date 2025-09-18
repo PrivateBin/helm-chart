@@ -58,7 +58,7 @@ See values.yaml for full documentation
 | `nodeSelector`                | Node selector                                       | `{}`                          |
 | `tolerations`                 | Tolerations                                         | `[]`                          |
 | `affinity`                    | Affinity or Anti-Affinity                           | `{}`                          |
-| `strategy`                    | Deployment strategy                                 | `{ type: Replace }`           |
+| `strategy`                    | Deployment strategy                                 | `{ type: RollingUpdate }`     |
 | `topologySpreadConstraints`   | Topology Spread Constraints                         | `[]`                          |
 | `configs`                     | Optional Privatebin configuration file              | `{}`                          |
 | `podAnnotations`              | Additional annotations to add to the pods           | `{}`                          |
