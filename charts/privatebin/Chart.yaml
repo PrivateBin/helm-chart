@@ -6,7 +6,7 @@ name: privatebin
 home: https://privatebin.info/
 icon: https://raw.githubusercontent.com/PrivateBin/assets/master/images/preview/icon.png
 type: application
-version: 0.23.0
+version: 0.24.0
 maintainers:
   - name: bdashrad
     email: bdashrad@gmail.com
@@ -19,8 +19,11 @@ keywords:
   - ZeroBin
 annotations:
   artifacthub.io/changes: |
-    - kind: changed
-      description: Upgrade PrivateBin to 2.0.0
+    - kind: added
+      description: Allow overriding default deploymentStrategy in values.yaml
+      links:
+        - name: Github PR
+          url: https://github.com/PrivateBin/helm-chart/pull/115
   artifacthub.io/images: |
     - name: privatebin
       image: privatebin/nginx-fpm-alpine:2.0.0
