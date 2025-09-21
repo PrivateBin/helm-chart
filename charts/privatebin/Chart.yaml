@@ -19,8 +19,11 @@ keywords:
   - ZeroBin
 annotations:
   artifacthub.io/changes: |
-    - kind: changed
-      description: Upgrade PrivateBin to 2.0.0
+    - kind: added
+      description: Allow overriding default deploymentStrategy in values.yaml
+      links:
+        - name: Github PR
+          url: https://github.com/PrivateBin/helm-chart/pull/115
   artifacthub.io/images: |
     - name: privatebin
       image: privatebin/nginx-fpm-alpine:2.0.0
