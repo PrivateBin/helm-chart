@@ -1,5 +1,5 @@
 ---
-remote: origin
+remote: origin/master
 chart-dirs:
   - charts
 chart-repos:
