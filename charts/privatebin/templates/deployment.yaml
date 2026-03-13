@@ -103,13 +103,26 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
+{{- if .Values.configsAsProjected }}
+        - name: configs
+          projected:
+            defaultMode: {{ default 420 .Values.configsProjected.defaultMode }}
+            sources:
+              - configMap:
+                  name: {{ include "privatebin.fullname" . }}-configs
+{{- range $cm := (default (list) .Values.configsProjected.configMaps) }}
+              - configMap:
+                  name: {{ $cm }}
+{{- end }}
+{{- range $sec := (default (list) .Values.configsProjected.secrets) }}
+              - secret:
+                  name: {{ $sec }}
+{{- end }}
+{{- else }}
         - name: configs
           configMap:
             name: {{ include "privatebin.fullname" . }}-configs
-        {{- if .Values.controller.emptyDir }}
-        - name: storage
-          emptyDir: {}
-        {{- end }}
+{{- end }}
         - name: run
           emptyDir:
             medium: "Memory"
@@ -118,6 +131,10 @@ spec:
             medium: "Memory"
         - name: nginx-cache
           emptyDir: {}
+        {{- if .Values.controller.emptyDir }}
+        - name: storage
+          emptyDir: {}
+        {{- end }}
       {{- if .Values.extraVolumes }}
       {{- include "privatebin.tplvalues.render" (dict "value" .Values.extraVolumes "context" $) | nindent 8 }}
       {{- end }}
