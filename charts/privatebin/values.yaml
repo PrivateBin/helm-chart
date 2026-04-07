@@ -117,6 +117,15 @@ configs: {}
   # conf.php: |-
   #   ; see https://github.com/PrivateBin/PrivateBin/blob/master/cfg/conf.sample.php for config
 
+configsAsProjected: true
+configsProjected:
+  defaultMode: 420
+  #secrets:
+  #  - privatebin-conf     # the Secret that contains conf.php
+  # optionally, extra configmaps if you ever need them
+  # configMaps:
+  #   - some-other-config
+
 ## Enable RBAC
 rbac:
   create: false

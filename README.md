@@ -60,6 +60,11 @@ See values.yaml for full documentation
 | `affinity`                   | Affinity or Anti-Affinity                          | `{}`                                             |
 | `topologySpreadConstraints`  | Topology Spread Constraints                        | `[]`                                             |
 | `configs`                    | Optional Privatebin configuration file             | `{}`                                             |
+| `configsAsProjected`         | Use a projected volume for the configs             | `{}`                                             |
+| `configsProjected`           | list of secrets and configMaps to include          | `{}`                                             |
+| `configsProjected.defaultMode`| default mount mode of the projected configs       | `420`                                            |
+| `configsProjected.secrets`   | secret configs to include                          | `nil`                                            |
+| `configsProjected.configMaps`| configMaps to include                              | `nil`                                            |
 | `podAnnotations`             | Additional annotations to add to the pods          | `{}`                                             |
 | `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
 | `extraVolumes`               | Additional volumes to add to the pods              | `[]`                                             |
