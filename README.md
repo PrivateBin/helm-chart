@@ -49,6 +49,7 @@ See values.yaml for full documentation
 | `service.annotations`        | Service annotations                                | `{}`                                             |
 | `ingress.enabled`            | Enables Ingress                                    | `false`                                          |
 | `ingress.annotations`        | Ingress annotations                                | `{}`                                             |
+| `ingress.labels`             | Ingress extra labels                               | `{}`                                             |
 | `ingress.hosts.host`         | Ingress accepted hostnames                         | `privatebin.local`                               |
 | `ingress.hosts.paths`        | Ingress paths                                      | `[]`                                             |
 | `ingress.hosts.paths.0.path` | Ingress path                                       | `/`                                              |
