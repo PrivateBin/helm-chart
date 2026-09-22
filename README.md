@@ -64,7 +64,7 @@ See values.yaml for full documentation
 | `additionalLabels`           | Additional labels to add to resources              | `{}`                                             |
 | `extraVolumes`               | Additional volumes to add to the pods              | `[]`                                             |
 | `extraVolumeMounts`          | Additional volume mounts to add to the pods        | `[]`                                             |
-
+| `extraObjects`               | Additional objects to add extra objects manifests  | `[]`                                             |
 
 ## Upgrades
 
