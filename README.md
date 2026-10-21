@@ -4,13 +4,16 @@ This is a kubernetes chart to deploy [PrivateBin](https://github.com/PrivateBin/
 
 ## Quick Start
 
-To install the privatebin chart with default options:
+To install the privatebin chart with default options as a release named `privatebin`:
 
 ```bash
 helm repo add privatebin https://privatebin.github.io/helm-chart
 helm repo update
-helm install privatebin/privatebin
+helm install privatebin privatebin/privatebin
 ```
+
+Helm 3 and later require a release name (or `--generate-name`); the `--name` flag
+from Helm 2 no longer exists.
 
 ## Installation
 
