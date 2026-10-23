@@ -131,3 +131,27 @@ rbac:
 podSecurityPolicy:
   enabled: false
   annotations: []
+
+# Add extra objects manifests for creating objects such as config-map.
+extraObjects: []
+#  - apiVersion: v1
+#    kind: ConfigMap
+#    metadata:
+#      name: nginx-config
+#      namespace: nginx-configmap
+#    data:
+#      nginx.conf: |
+#        events {}
+#    
+#        http {
+#            server {
+#                listen 80;
+#                server_name localhost;
+#                root /usr/share/nginx/html;
+#                index index.html index.htm;
+#    
+#                location = /50x.html {
+#                    root /usr/share/nginx/html;
+#                }
+#            }
+#        }
